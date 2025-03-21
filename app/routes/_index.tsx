@@ -1,4 +1,6 @@
 import type { MetaFunction } from "@remix-run/cloudflare";
+import Lightdarkmode from "../components/Lightdarkmode";
+import { Link } from "@remix-run/react";
 
 export const meta: MetaFunction = () => {
   return [
@@ -7,15 +9,20 @@ export const meta: MetaFunction = () => {
   ];
 };
 
+const name = "DemoRemix Repo";
+
 export default function Index() {
   return (
     <div className='flex h-screen items-center justify-center'>
       <div className='flex flex-col items-center gap-16'>
         <header className='flex flex-col items-center gap-9'>
           <h1 className='leading text-2xl font-bold text-gray-800 dark:text-gray-100'>
-            Welcome to <span className='sr-only'>Remix</span>
+            Welcome to {name}
           </h1>
-          <div className='h-[144px] w-[434px]'>
+          <div>
+            <Lightdarkmode />
+          </div>
+          {/* <div className='h-[144px] w-[434px]'>
             <img
               src='/logo-light.png'
               alt='Remix'
@@ -26,7 +33,7 @@ export default function Index() {
               alt='Remix'
               className='hidden w-full dark:block'
             />
-          </div>
+          </div> */}
         </header>
         <nav className='flex flex-col items-center justify-center gap-4 rounded-3xl border border-gray-200 p-6 dark:border-gray-700'>
           <p className='leading-6 text-gray-700 dark:text-gray-200'>
@@ -48,7 +55,25 @@ export default function Index() {
             ))}
           </ul>
         </nav>
-        <div className='h2'>NOTICE: THIS IS JUST A DEMO OF REMIX.RUN</div>
+        <div className='h2'>NOTICE: THIS IS JUST A {name} OF REMIX.RUN</div>
+        <div>
+          <Link to='/about'>about</Link>
+        </div>
+        <div>
+          {/* <!-- Add an animated fade and zoom entrance --> */}
+          <div className='animate-in fade-in zoom-in duration-1000'>{name}</div>
+
+          {/* <!-- Add an animated slide to top-left exit --> */}
+          <div className='animate-out slide-out-to-top slide-out-to-left duration-1000'>
+            {name}
+          </div>
+
+          {/* <!-- Control animation duration --> */}
+          <div className='animate-in fade-in zoom-in duration-1000'>{name}</div>
+
+          {/* <!-- Control animation delay --> */}
+          <div className='animate-in fade-in zoom-in delay-1000'>{name}</div>
+        </div>
       </div>
     </div>
   );
